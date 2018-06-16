@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<project
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.silong.cloud</groupId>
+    <artifactId>acheron-parent</artifactId>
+    <version>0.0.1</version>
+  </parent>
+
+  <artifactId>acheron-connector</artifactId>
+  <name>acheron-connector</name>
+  <description>Public Cloud Connector.</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-autoconfigure</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-starter-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-log4j2</artifactId>
+    </dependency>
+
+    <!-- 加密组件 -->
+    <dependency>
+      <groupId>org.bouncycastle</groupId>
+      <artifactId>bcpkix-jdk14</artifactId>
+    </dependency>
+    <!-- 加密组件 -->
+
+    <!-- huaweicloud obs -->
+    <dependency>
+      <groupId>com.huawei.storage</groupId>
+      <artifactId>esdk-obs-java</artifactId>
+    </dependency>
+    <!-- huaweicloud obs -->
+
+    <!-- openstack4j SDK -->
+    <dependency>
+      <groupId>com.huawei</groupId>
+      <artifactId>openstack4j-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.huawei.openstack4j.connectors</groupId>
+      <artifactId>openstack4j-httpclient</artifactId>
+    </dependency>
+    <!-- openstack4j SDK -->
+
+    <dependency>
+      <groupId>com.silong.cloud</groupId>
+      <artifactId>acheron-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+  </dependencies>
+</project>

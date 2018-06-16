@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.silong.cloud</groupId>
+  <artifactId>acheron-parent</artifactId>
+  <version>0.0.1</version>
+  <packaging>pom</packaging>
+
+  <name>acheron</name>
+  <description>Reactive Stream Services For HwCloud.</description>
+  <modules>
+    <module>bootstrap</module>
+    <module>core</module>
+    <module>authentication</module>
+    <module>common</module>
+    <module>server</module>
+    <module>connector</module>
+    <module>dns</module>
+  </modules>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.0.3.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+    </license>
+  </licenses>
+
+  <organization>
+    <name>Silong Software Technologies Co., Ltd.</name>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>shi00</id>
+      <name>louis sin</name>
+      <email>louis2sin@gmail.com</email>
+      <organization>Silong Software Technologies Co., Ltd.</organization>
+      <roles>
+        <role>Project Leader</role>
+        <role>Developer</role>
+      </roles>
+    </developer>
+  </developers>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>10</java.version>
+    <lombok.version>1.16.22</lombok.version>
+    <spring-boot-admin.version>2.0.0</spring-boot-admin.version>
+    <spring-cloud.version>Finchley.RC2</spring-cloud.version>
+    <spring-statemachine.version>2.0.1.RELEASE</spring-statemachine.version>
+    <jsr305.version>3.0.2</jsr305.version>
+    <ignite.version>2.5.0</ignite.version>
+    <javadns.version>2.1.8</javadns.version>
+    <scalified.tree.version>0.2.5</scalified.tree.version>
+    <orika.version>1.5.2</orika.version>
+    <jaxb2.version>2.3.1</jaxb2.version>
+    <google.guava.version>23.0</google.guava.version>
+    <commons.net.version>3.6</commons.net.version>
+    <commons.io.version>2.6</commons.io.version>
+    <common.lang.version>3.7</common.lang.version>
+    <hwcloud.obs.version>2.1.21</hwcloud.obs.version>
+    <commons.collection.version>4.1</commons.collection.version>
+    <springfox.swagger2.version>2.9.0</springfox.swagger2.version>
+    <openstack4j.version>3.0.5.1</openstack4j.version>
+    <bouncycastle.version>1.59</bouncycastle.version>
+    <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.statemachine</groupId>
+        <artifactId>spring-statemachine-bom</artifactId>
+        <version>${spring-statemachine.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>spring-boot-admin-dependencies</artifactId>
+        <version>${spring-boot-admin.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <!-- javax validation annotation -->
+      <dependency>
+        <groupId>com.google.code.findbugs</groupId>
+        <artifactId>jsr305</artifactId>
+        <version>${jsr305.version}</version>
+      </dependency>
+      <!-- javax validation annotation -->
+
+      <!-- 安全组件 -->
+      <dependency>
+        <groupId>org.bouncycastle</groupId>
+        <artifactId>bcpkix-jdk14</artifactId>
+        <version>${bouncycastle.version}</version>
+      </dependency>
+      <!-- 安全组件 -->
+
+      <dependency>
+        <groupId>javax.annotation</groupId>
+        <artifactId>javax.annotation-api</artifactId>
+        <version>${javax.annotation-api.version}</version>
+      </dependency>
+
+      <!-- guava -->
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${google.guava.version}</version>
+      </dependency>
+      <!-- guava -->
+
+      <!-- apache ignite -->
+      <dependency>
+        <groupId>org.apache.ignite</groupId>
+        <artifactId>ignite-core</artifactId>
+        <version>${ignite.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.ignite</groupId>
+        <artifactId>ignite-indexing</artifactId>
+        <version>${ignite.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.ignite</groupId>
+        <artifactId>ignite-spring</artifactId>
+        <version>${ignite.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.ignite</groupId>
+        <artifactId>ignite-slf4j</artifactId>
+        <version>${ignite.version}</version>
+      </dependency>
+      <!-- apache ignite -->
+
+      <!-- apache common utilities -->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>${common.lang.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-net</groupId>
+        <artifactId>commons-net</artifactId>
+        <version>${commons.net.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-collections4</artifactId>
+        <version>${commons.collection.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>${commons.io.version}</version>
+      </dependency>
+      <!-- apache common utilities -->
+
+      <!-- java dns utility -->
+      <dependency>
+        <groupId>dnsjava</groupId>
+        <artifactId>dnsjava</artifactId>
+        <version>${javadns.version}</version>
+      </dependency>
+      <!-- java dns utility -->
+
+      <!-- 通用tree数据结构 -->
+      <dependency>
+        <groupId>com.scalified</groupId>
+        <artifactId>tree</artifactId>
+        <version>${scalified.tree.version}</version>
+      </dependency>
+      <!-- 通用tree数据结构 -->
+
+      <!-- springfox-swagger2 -->
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>${springfox.swagger2.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>${springfox.swagger2.version}</version>
+      </dependency>
+      <!-- springfox-swagger2 -->
+
+      <!-- orika -->
+      <dependency>
+        <groupId>ma.glasnost.orika</groupId>
+        <artifactId>orika-core</artifactId>
+        <version>${orika.version}</version>
+      </dependency>
+      <!-- orika -->
+
+      <!-- huaweicloud obs -->
+      <dependency>
+        <groupId>com.huawei.storage</groupId>
+        <artifactId>esdk-obs-java</artifactId>
+        <version>${hwcloud.obs.version}</version>
+      </dependency>
+      <!-- huaweicloud obs -->
+
+      <!-- openstack4j SDK -->
+      <dependency>
+        <groupId>com.huawei</groupId>
+        <artifactId>openstack4j-core</artifactId>
+        <version>${openstack4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.huawei.openstack4j.connectors</groupId>
+        <artifactId>openstack4j-httpclient</artifactId>
+        <version>${openstack4j.version}</version>
+      </dependency>
+      <!-- openstack4j SDK -->
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <downloadSources>true</downloadSources>
+        </configuration>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>jaxb2-maven-plugin</artifactId>
+          <version>${jaxb2.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.antlr</groupId>
+          <artifactId>antlr4-maven-plugin</artifactId>
+          <version>${antlr4.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+</project>

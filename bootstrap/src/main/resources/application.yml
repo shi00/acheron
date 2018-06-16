@@ -1,0 +1,214 @@
+logging:
+  config: classpath:log4j2-acheron.xml
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+        - info, health, metrics
+      base-path: /monitor
+authentication:
+  token:
+    token-header-key: X-Access-Token
+    expires: 86400
+  auth-url: /v1.0/auth/tokens
+  admin-url-list:
+  - ${management.endpoints.web.base-path}/**
+  auth-white-list:
+  - ${authentication.auth-url}
+server:
+  port: 9019
+  address: 0.0.0.0
+  http2:
+    enabled: true
+  max-http-header-size: 10240
+  ssl:
+    enabled: true
+    protocol: TLS
+    key-store: classpath:security/acheron.jks
+    key-password: JY4atkPl+L6iPpXBVdZ3rv171lvhmlvv/yJ2BU8C6g8=]8eSjnUugGmPPDC0eemooVw==]PBwzBd/aWudXMb0jczi2sg==
+    key-store-password: JY4atkPl+L6iPpXBVdZ3rv171lvhmlvv/yJ2BU8C6g8=]8eSjnUugGmPPDC0eemooVw==]PBwzBd/aWudXMb0jczi2sg==
+  compression:
+    enabled: true
+    mime-types:
+    - text/html
+    - text/xml
+    - text/plain
+    - text/css
+    - application/javascript
+    - application/json
+    - application/xml
+    min-response-size: 1024
+  use-forward-headers: true
+spring:
+  cloud:
+    config:
+      enabled: false
+      discovery:
+        enabled: false
+  webflux:
+    date-format: ${spring.jackson.date-format}
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  messages:
+    encoding: UTF-8
+    basename: classpath:i18n/common_messages,classpath:i18n/auth_messages,classpath:i18n/core_messages
+    fallback-to-system-locale: false
+    use-code-as-default-message: false
+    cache-duration: 3600
+  jackson:
+    date-format: yyyy-MM-dd'T'HH:mm:ss.SSSZ
+    joda-date-time-format: ${spring.jackson.date-format}
+    time-zone:
+      raw-offset: 0
+    serialization:
+      WRITE_ENUMS_USING_TO_STRING: true
+      INDENT_OUTPUT: true
+    deserialization:
+      FAIL_ON_UNKNOWN_PROPERTIES: false
+      READ_ENUMS_USING_TO_STRING: true
+      UNWRAP_ROOT_VALUE: true
+    default-property-inclusion: NON_NULL
+  profiles:
+    active:
+    - openstack
+    - huawei
+  application:
+    name: acheron
+connector:
+  openstack4j:
+    logging:
+      enable: true
+    ignore-ssl-verification: true
+  openstack:
+    regions:
+      cn-south-1:
+        endpoint: https://iam.cn-south-1.myhuaweicloud.com:443/v3
+        domain:
+          name: l00193057
+          id: a8233e8849af4b9887d65294df008f9f
+        project:
+          name: cn-south-1
+          id: d055350bb2f34c38b993031b43b68b9c
+        user:
+          name: testuser
+          password: ubnni4Vmff08Eg8mGfR4jlXhjEss+i6VuXCd/XasE6w=]Xt3wLOlW9PdyBaBMgXGOYg==]WALL8F316XLFThC4P1Izaw==
+    default-region: cn-south-1
+    token-timeout: 86400
+    token-concurrent-access-level: 16
+  rest:
+    client:
+      enable-http2: true
+      connect-timeout: 10
+      read-timeout: 10
+      ssl-protocols:
+       - TLSv1.2
+       - TLSv1.1
+ignite:
+  segmentation-resolve-attempts: 3
+  active-on-start: true
+  segmentation-resolver:
+    tcp:
+      local-address: localhost
+      local-port: 0
+      connect-timeout: 5000
+      host: iam.eu-de.otc.t-systems.com
+      port: 443
+  load-balancing-spi:
+    adaptive:
+      name: erebus-task-loadbalancer
+      cpu:
+        processor-coefficient: 0.75
+        use-processors: true
+        use-average: true
+  failover-spi:
+    job-stealing:
+      name: erebus-failover-jobstealing
+  ssl-context-factory:
+    protocol: TLS
+    key-store-type: JKS
+    key-store-password: Huawei123
+    key-store-file-path: security\erebus-node.jks
+    trust-managers:
+    - org.apache.ignite.ssl.SslContextFactory$DisabledX509TrustManager
+  event-storage-spi:
+    memory:
+      expire-age-ms: 600000
+  local-event-listeners:
+    '[com.silong.erebus.core.ignite.IgniteEventListener]': 10,11,12,14,16,17,21,22,40,65,70,98,99,100
+  include-event-types: 10,11,12,14,16,17,21,22,40,65,70,98,99,100
+  ignite-instance-name: sin1
+  binary-configuration:
+    compact-footer: false
+  sql-connector-configuration:
+    tcp-no-delay: true
+    host: 127.0.0.1
+    port: 10086
+    port-range: 500
+  segmentation-policy: STOP
+  default-cache-config:
+    memory-policy-name: ${ignite.memory-configuration.memory-policies[0].name}
+    backups: 2
+    statistics-enabled: true
+  user-attributes:
+    node-role: HYBRID
+    deployment: PHYSICAL
+  transaction-configuration:
+    default-tx-concurrency: OPTIMISTIC
+    default-tx-isolation: SERIALIZABLE
+    default-tx-timeout: ${spring.transaction.default-timeout}
+    use-jta-synchronization: false
+  rebalance-thread-pool-size: 1
+  public-thread-pool-size: 5
+  system-thread-pool-size: 5
+  memory-configuration:
+    concurrency-level: 4
+    page-size: 4096
+    default-memory-policy-name: Default_Region
+    system-cache-initial-size: 104857600
+    system-cache-max-size: 104857600
+    memory-policies:
+    - metrics-enabled: true
+      initial-size: 1073741824
+      max-size: 1073741824
+      name: Default_Region
+  grid-logger: org.apache.ignite.logger.log4j2.Log4J2Logger[log4j2.xml]
+  deployment-mode: SHARED
+  peer-class-loading-enabled: false
+  lifecycle-beans:
+  - com.silong.erebus.core.ignite.IgniteLifecycleBean
+  communication-spi:
+    tcp:
+      local-port-range: 100
+      local-port: 47100
+      message-queue-limit: 1024
+      tcp-no-delay: true
+  collision-spi:
+    job-stealing:
+      stealing-enabled: true
+      message-expire-time: 3000
+      maximum-stealing-attempts: 3
+      wait-jobs-threshold: 5
+  check-point-spi:
+    cache:
+      name: erebus-cache-checkpoints
+      cache-name: checkpoints
+      checkpoint-listener: com.silong.erebus.core.ignite.IgniteCheckpointListener
+  atomic-configuration:
+    backups: 2
+    cache-mode: PARTITIONED
+    atomic-sequence-reserve-size: 1024
+    group-name: erebus-atomic-group
+  discovery-spi:
+    tcp:
+      obs:
+        access-key: /Ed0uFXucNozd1puu5EMi4xwKZBe+RQT+Qm3mXcS9Wc=]GD4WxomrH6GhLNhFZcjLGA==]x36vjbMsRax5q1dqdDwEfwnvCewrxx/j535yhljFhOc=
+        secret-access-key: XEIRUKwqT3IVG5TQzlQlzL5ysaPHzdJJgc1FirYnvLQ=]rMoTuD6utTbkSoY0IEgLZA==]L+5+IxLACP8Ute1ZwSKoj4gx1sXsR1K0NtwS/c6YiVTQaUclpVDrGytSAMpRPMwD
+        obs-endpoint: https://obs.cn-south-1.myhwclouds.com
+  client-mode: false
