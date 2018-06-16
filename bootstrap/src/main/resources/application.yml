@@ -29,8 +29,8 @@ server:
     enabled: true
     protocol: TLS
     key-store: classpath:security/acheron.jks
-    key-password: JY4atkPl+L6iPpXBVdZ3rv171lvhmlvv/yJ2BU8C6g8=]8eSjnUugGmPPDC0eemooVw==]PBwzBd/aWudXMb0jczi2sg==
-    key-store-password: JY4atkPl+L6iPpXBVdZ3rv171lvhmlvv/yJ2BU8C6g8=]8eSjnUugGmPPDC0eemooVw==]PBwzBd/aWudXMb0jczi2sg==
+    key-password: "changeit"
+    key-store-password: "changeit"
   compression:
     enabled: true
     mime-types:
@@ -91,14 +91,14 @@ connector:
       cn-south-1:
         endpoint: https://iam.cn-south-1.myhuaweicloud.com:443/v3
         domain:
-          name: l00193057
-          id: a8233e8849af4b9887d65294df008f9f
+          name: haha
+          id: hd
         project:
-          name: cn-south-1
-          id: d055350bb2f34c38b993031b43b68b9c
+          name: asd
+          id: dsad
         user:
-          name: testuser
-          password: ubnni4Vmff08Eg8mGfR4jlXhjEss+i6VuXCd/XasE6w=]Xt3wLOlW9PdyBaBMgXGOYg==]WALL8F316XLFThC4P1Izaw==
+          name: abc
+          password: changeit
     default-region: cn-south-1
     token-timeout: 86400
     token-concurrent-access-level: 16
@@ -133,7 +133,7 @@ ignite:
   ssl-context-factory:
     protocol: TLS
     key-store-type: JKS
-    key-store-password: Huawei123
+    key-store-password: abc
     key-store-file-path: security\erebus-node.jks
     trust-managers:
     - org.apache.ignite.ssl.SslContextFactory$DisabledX509TrustManager
@@ -208,7 +208,7 @@ ignite:
   discovery-spi:
     tcp:
       obs:
-        access-key: /Ed0uFXucNozd1puu5EMi4xwKZBe+RQT+Qm3mXcS9Wc=]GD4WxomrH6GhLNhFZcjLGA==]x36vjbMsRax5q1dqdDwEfwnvCewrxx/j535yhljFhOc=
-        secret-access-key: XEIRUKwqT3IVG5TQzlQlzL5ysaPHzdJJgc1FirYnvLQ=]rMoTuD6utTbkSoY0IEgLZA==]L+5+IxLACP8Ute1ZwSKoj4gx1sXsR1K0NtwS/c6YiVTQaUclpVDrGytSAMpRPMwD
+        access-key: sdas
+        secret-access-key: asd
         obs-endpoint: https://obs.cn-south-1.myhwclouds.com
   client-mode: false
