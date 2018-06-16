@@ -29,8 +29,8 @@ server:
     enabled: true
     protocol: TLS
     key-store: classpath:security/acheron.jks
-    key-password: "changeit"
-    key-store-password: "changeit"
+    key-password: changeit
+    key-store-password: changeit
   compression:
     enabled: true
     mime-types:
