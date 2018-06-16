@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>acheron-bootstrap</artifactId>
-  <name>erebus-bootstrap</name>
+  <name>acheron-bootstrap</name>
   <description>Integrate all modules to make up the service.</description>
 
   <dependencies>
