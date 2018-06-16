@@ -11,7 +11,7 @@
   </parent>
 
   <artifactId>acheron-auth</artifactId>
-  <name>erebus-auth</name>
+  <name>acheron-auth</name>
   <description>Provides authentication for service API access.</description>
 
   <dependencies>
